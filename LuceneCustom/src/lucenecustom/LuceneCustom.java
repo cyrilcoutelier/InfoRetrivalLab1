@@ -24,7 +24,7 @@ public class LuceneCustom {
   public static void main(String[] args) throws IOException {
     Version matchVersion = Version.LUCENE_40; // Substitute desired Lucene version for XY
     Analyzer analyzer = new MyAnalyser(matchVersion); // or any other analyzer
-    try (TokenStream ts = analyzer.tokenStream("myfield", new StringReader("some text goes here"))) {
+    try (TokenStream ts = analyzer.tokenStream("myfield", new StringReader("some text goes here. Dices. Sharing. "))) {
       OffsetAttribute offsetAtt = ts.addAttribute(OffsetAttribute.class);
       CharTermAttribute termAttr = ts.addAttribute(CharTermAttribute.class);
 
