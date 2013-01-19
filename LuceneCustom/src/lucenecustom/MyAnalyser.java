@@ -33,7 +33,9 @@ public class MyAnalyser extends Analyzer {
   @Override
   protected Analyzer.TokenStreamComponents createComponents(String fieldName, Reader reader) {
     Tokenizer src = new LowerCaseTokenizer(this.matchVersion, reader);
+
     TokenStream result = new StopFilter(this.matchVersion, src, this.stopWords);
+
     Analyzer.TokenStreamComponents tsc = new Analyzer.TokenStreamComponents(src, result);
 
     return tsc;
