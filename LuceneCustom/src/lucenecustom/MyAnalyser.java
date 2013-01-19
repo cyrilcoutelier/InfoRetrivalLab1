@@ -10,6 +10,7 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.core.LowerCaseTokenizer;
 import org.apache.lucene.analysis.core.StopFilter;
+import org.apache.lucene.analysis.en.PorterStemFilter;
 import org.apache.lucene.analysis.util.CharArraySet;
 import org.apache.lucene.util.Version;
 
@@ -35,6 +36,7 @@ public class MyAnalyser extends Analyzer {
     Tokenizer src = new LowerCaseTokenizer(this.matchVersion, reader);
 
     TokenStream result = new StopFilter(this.matchVersion, src, this.stopWords);
+    result = new PorterStemFilter(result);
 
     Analyzer.TokenStreamComponents tsc = new Analyzer.TokenStreamComponents(src, result);
 
