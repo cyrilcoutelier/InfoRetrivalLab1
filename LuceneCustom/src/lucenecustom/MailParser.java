@@ -62,6 +62,7 @@ public class MailParser {
           ++i;
         }
       }
+      ++i;
     }
   }
 
