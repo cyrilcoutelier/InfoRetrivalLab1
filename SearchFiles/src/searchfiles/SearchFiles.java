@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -99,7 +98,7 @@ public class SearchFiles {
     }
     try (IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(index)))) {
       IndexSearcher searcher = new IndexSearcher(reader);
-      Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_40);
+      Analyzer analyzer = new MyAnalyser(Version.LUCENE_40);
 
       BufferedReader in;
       if (queries != null) {
